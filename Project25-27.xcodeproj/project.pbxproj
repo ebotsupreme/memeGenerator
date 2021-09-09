@@ -13,6 +13,7 @@
 		551F879C26E930A100AC2F9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F879A26E930A100AC2F9B /* Main.storyboard */; };
 		551F879E26E930A400AC2F9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551F879D26E930A400AC2F9B /* Assets.xcassets */; };
 		551F87A126E930A400AC2F9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F879F26E930A400AC2F9B /* LaunchScreen.storyboard */; };
+		551F87A926EA76E900AC2F9B /* MemeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F87A826EA76E900AC2F9B /* MemeViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		551F879D26E930A400AC2F9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		551F87A026E930A400AC2F9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		551F87A226E930A400AC2F9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		551F87A826EA76E900AC2F9B /* MemeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				551F879426E930A100AC2F9B /* AppDelegate.swift */,
 				551F879626E930A100AC2F9B /* SceneDelegate.swift */,
 				551F879826E930A100AC2F9B /* ViewController.swift */,
+				551F87A826EA76E900AC2F9B /* MemeViewCell.swift */,
 				551F879A26E930A100AC2F9B /* Main.storyboard */,
 				551F879D26E930A400AC2F9B /* Assets.xcassets */,
 				551F879F26E930A400AC2F9B /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551F87A926EA76E900AC2F9B /* MemeViewCell.swift in Sources */,
 				551F879926E930A100AC2F9B /* ViewController.swift in Sources */,
 				551F879526E930A100AC2F9B /* AppDelegate.swift in Sources */,
 				551F879726E930A100AC2F9B /* SceneDelegate.swift in Sources */,

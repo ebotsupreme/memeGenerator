@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UICollectionViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO
@@ -19,6 +19,9 @@ class ViewController: UICollectionViewController {
          4. render image with updated text in positions proj 27 ch 3 and share image
          5. add share
          */
+        
+        title = "Meme Generator"
+//        imageTitleLabel.text = "Placeholder caption."
     }
 
 
