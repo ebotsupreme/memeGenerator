@@ -16,26 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4y3-8B-QlF">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4y3-8B-QlF">
                             <size key="itemSize" width="394" height="301"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Meme" id="4mh-x3-QqU" customClass="MemeViewCell" customModule="Project25_27" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="Meme" id="4mh-x3-QqU" customClass="MemeViewCell" customModule="Project25_27" customModuleProvider="target">
                                 <rect key="frame" x="10" y="10" width="394" height="301"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KWa-SA-jIu">
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="301"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hdl-OI-7Dr">
-                                            <rect key="frame" x="8" y="8" width="378" height="210"/>
-                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hdl-OI-7Dr">
+                                            <rect key="frame" x="18" y="8" width="358" height="208"/>
+                                            <color key="backgroundColor" red="0.64742857220000005" green="0.11853265020000001" blue="0.1335859895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-vl-po7">
-                                            <rect key="frame" x="8" y="226" width="378" height="65"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-vl-po7">
+                                            <rect key="frame" x="18" y="186" width="358" height="45"/>
+                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="sWO-sb-kXb"/>
                                             </constraints>
@@ -46,14 +47,15 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="leading" secondItem="rOd-vl-po7" secondAttribute="leading" id="0hG-3b-UzM"/>
-                                        <constraint firstItem="Hdl-OI-7Dr" firstAttribute="leading" secondItem="KWa-SA-jIu" secondAttribute="leadingMargin" id="DTa-vI-ODl"/>
+                                        <constraint firstItem="Hdl-OI-7Dr" firstAttribute="leading" secondItem="KWa-SA-jIu" secondAttribute="leadingMargin" constant="10" id="DTa-vI-ODl"/>
                                         <constraint firstAttribute="bottom" secondItem="rOd-vl-po7" secondAttribute="bottom" constant="10" id="NfA-l8-ly7"/>
-                                        <constraint firstItem="Hdl-OI-7Dr" firstAttribute="trailing" secondItem="KWa-SA-jIu" secondAttribute="trailingMargin" id="OVw-Hq-5In"/>
-                                        <constraint firstItem="rOd-vl-po7" firstAttribute="top" secondItem="Hdl-OI-7Dr" secondAttribute="bottom" constant="8" id="Yio-N0-9dq"/>
+                                        <constraint firstItem="Hdl-OI-7Dr" firstAttribute="trailing" secondItem="KWa-SA-jIu" secondAttribute="trailingMargin" constant="-10" id="OVw-Hq-5In"/>
+                                        <constraint firstItem="rOd-vl-po7" firstAttribute="top" secondItem="Hdl-OI-7Dr" secondAttribute="bottom" constant="10" id="Yio-N0-9dq"/>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="trailing" secondItem="rOd-vl-po7" secondAttribute="trailing" id="bxF-of-1u9"/>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="top" secondItem="KWa-SA-jIu" secondAttribute="topMargin" id="dqj-XV-YNP"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="customSize" width="394" height="301"/>
                                 <connections>
                                     <outlet property="imageName" destination="rOd-vl-po7" id="tgx-En-02i"/>
@@ -95,8 +97,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
