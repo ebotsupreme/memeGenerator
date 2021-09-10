@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UICollectionViewController {
+class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var memes = [String]()
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class ViewController: UICollectionViewController {
          */
         
         title = "Meme Generator"
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .camera, target: self, action: #selector(selectPhoto))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .camera, target: self, action: #selector(addImage))
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,12 +43,48 @@ class ViewController: UICollectionViewController {
         return cell
     }
     
-    @objc func selectPhoto() {
-        // move to add image screen
-        if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") {
+    @objc func addImage() {
+        // add image
+        let picker = UIImagePickerController()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
+        
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+        
+        
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        
+        let imageName = UUID().uuidString
+        let imagePath = getDocumentaryDirectory().appendingPathComponent(imageName)
+        
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+        } else {
+            print("Could not retrieve jpegData from selected image.")
+        }
+        
+        // move to add text screen
+        if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") as? AddImageViewController {
+            avc.path = imagePath
             navigationController?.pushViewController(avc, animated: true)
         }
         
+        dismiss(animated: true)
+    }
+    
+    func getDocumentaryDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 
 

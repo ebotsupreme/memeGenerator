@@ -9,6 +9,7 @@ import UIKit
 
 class AddImageViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
+    var path: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +17,10 @@ class AddImageViewController: UIViewController {
         title = "Add Image and text"
 
         print("AddimageViewController page.")
+        
+        if let imagePath = path {
+            imageView.image = UIImage(contentsOfFile: imagePath.path)
+        }
     }
     
 
