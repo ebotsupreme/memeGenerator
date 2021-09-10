@@ -15,6 +15,7 @@
 		551F87A126E930A400AC2F9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F879F26E930A400AC2F9B /* LaunchScreen.storyboard */; };
 		551F87A926EA76E900AC2F9B /* MemeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F87A826EA76E900AC2F9B /* MemeViewCell.swift */; };
 		551F87AB26EA8C1100AC2F9B /* AddImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F87AA26EA8C1100AC2F9B /* AddImageViewController.swift */; };
+		551F87AD26EBD61D00AC2F9B /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F87AC26EBD61D00AC2F9B /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		551F87A226E930A400AC2F9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		551F87A826EA76E900AC2F9B /* MemeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewCell.swift; sourceTree = "<group>"; };
 		551F87AA26EA8C1100AC2F9B /* AddImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageViewController.swift; sourceTree = "<group>"; };
+		551F87AC26EBD61D00AC2F9B /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				551F879426E930A100AC2F9B /* AppDelegate.swift */,
 				551F879626E930A100AC2F9B /* SceneDelegate.swift */,
 				551F879826E930A100AC2F9B /* ViewController.swift */,
+				551F87AC26EBD61D00AC2F9B /* Meme.swift */,
 				551F87A826EA76E900AC2F9B /* MemeViewCell.swift */,
 				551F879A26E930A100AC2F9B /* Main.storyboard */,
 				551F87AA26EA8C1100AC2F9B /* AddImageViewController.swift */,
@@ -146,6 +149,7 @@
 				551F87A926EA76E900AC2F9B /* MemeViewCell.swift in Sources */,
 				551F879926E930A100AC2F9B /* ViewController.swift in Sources */,
 				551F879526E930A100AC2F9B /* AppDelegate.swift in Sources */,
+				551F87AD26EBD61D00AC2F9B /* Meme.swift in Sources */,
 				551F87AB26EA8C1100AC2F9B /* AddImageViewController.swift in Sources */,
 				551F879726E930A100AC2F9B /* SceneDelegate.swift in Sources */,
 			);

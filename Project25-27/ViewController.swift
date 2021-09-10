@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var memes = [String]()
+    var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

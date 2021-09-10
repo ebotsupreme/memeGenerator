@@ -94,14 +94,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rx0-A7-4gB">
                                         <rect key="frame" x="145.5" y="578" width="83" height="30"/>
                                         <state key="normal" title="Bottom Text"/>
+                                        <connections>
+                                            <action selector="addBottomText:" destination="0As-zW-7tU" eventType="touchUpInside" id="SI5-oK-DHk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5h-Hq-OWS">
                                         <rect key="frame" x="317" y="578" width="49" height="30"/>
                                         <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submit:" destination="0As-zW-7tU" eventType="touchUpInside" id="7r2-a7-uPv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLm-6U-T0U">
                                         <rect key="frame" x="0.0" y="578" width="59" height="30"/>
                                         <state key="normal" title="Top Text"/>
+                                        <connections>
+                                            <action selector="addTopText:" destination="0As-zW-7tU" eventType="touchUpInside" id="XzI-lW-ykp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
