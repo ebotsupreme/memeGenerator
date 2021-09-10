@@ -21,6 +21,9 @@ class AddImageViewController: UIViewController {
         if let imagePath = path {
             imageView.image = UIImage(contentsOfFile: imagePath.path)
         }
+        
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor(named: "grey")?.cgColor
     }
     
 

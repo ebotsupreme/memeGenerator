@@ -44,7 +44,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     @objc func addImage() {
-        // add image
         let picker = UIImagePickerController()
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -56,9 +55,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
-        
-        
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -73,7 +69,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             print("Could not retrieve jpegData from selected image.")
         }
         
-        // move to add text screen
+        // move to add image & text screen
         if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") as? AddImageViewController {
             avc.path = imagePath
             navigationController?.pushViewController(avc, animated: true)
