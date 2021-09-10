@@ -19,10 +19,11 @@ class ViewController: UICollectionViewController {
          3. add image alerts , image controller, image picker project101112 or project13
          4. render image with updated text in positions proj 27 ch 3 and share image
          5. add share
+         6. have details page to show image
          */
         
         title = "Meme Generator"
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .camera, target: self, action: #selector(selectPhoto))
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,6 +41,14 @@ class ViewController: UICollectionViewController {
         cell.layer.cornerRadius = 5
         
         return cell
+    }
+    
+    @objc func selectPhoto() {
+        // move to add image screen
+        if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") {
+            navigationController?.pushViewController(avc, animated: true)
+        }
+        
     }
 
 
