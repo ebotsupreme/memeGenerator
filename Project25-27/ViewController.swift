@@ -83,6 +83,5 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         return paths[0]
     }
 
-
 }
 

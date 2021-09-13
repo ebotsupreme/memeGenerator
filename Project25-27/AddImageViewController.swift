@@ -5,6 +5,7 @@
 //  Created by Eddie Jung on 9/9/21.
 //
 
+import CoreImage
 import UIKit
 
 class AddImageViewController: UIViewController {
@@ -57,7 +58,25 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func submit(_ sender: UIButton) {
-        print("Submitted!")
+        guard let image = imageView.image else {
+            let ac = UIAlertController(title: "Save error. Please select an image first.", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
 }
