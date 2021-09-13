@@ -10,20 +10,25 @@ import UIKit
 class ViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var memes = [Meme]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO
         /*
-         1. create collectionview revised project 103c
-         2. create detail view with imageView, 3 buttons
-         3. add image alerts , image controller, image picker project101112 or project13
-         4. render image with updated text in positions proj 27 ch 3 and share image
+         4. save image data to user defaults
+         4.2 load image data from user defaults
+         4.3 connect data to main view controller, reset background colors
          5. add share
          6. have details page to show image
+         7. refactor
          */
         
         title = "Meme Generator"
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .camera, target: self, action: #selector(addImage))
+        load()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,6 +77,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         // move to add image & text screen
         if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") as? AddImageViewController {
             avc.path = imagePath
+            avc.memes = memes
             navigationController?.pushViewController(avc, animated: true)
         }
         
@@ -82,6 +88,20 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-
+    
+    func load() {
+        let defaults = UserDefaults.standard
+        
+        if let savedData = defaults.object(forKey: "memes") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                memes = try jsonDecoder.decode([Meme].self, from: savedData)
+                print("MEMES LOADED!")
+            } catch {
+                print("Failed to load memes: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 

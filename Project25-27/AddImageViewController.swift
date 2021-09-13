@@ -15,7 +15,7 @@ class AddImageViewController: UIViewController {
     var bottomText = ""
     var filePath: URL?
     
-    var meme = [Meme]()
+    var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +74,11 @@ class AddImageViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
         } else {
             let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photos.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
             present(ac, animated: true)
+            
         }
     }
     
@@ -112,6 +115,16 @@ class AddImageViewController: UIViewController {
         }
         
         return renderedImage.jpegData(compressionQuality: 0.8)!
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedData = try? jsonEncoder.encode(memes) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "memes")
+            print("SAVED!")
+        }
     }
     
 }
