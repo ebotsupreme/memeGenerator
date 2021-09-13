@@ -46,7 +46,14 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func addBottomText(_ sender: UIButton) {
+        let ac = UIAlertController(title: "Add bottom text", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
+            guard let newBottomText = ac?.textFields?[0].text else { return }
+            self?.bottomText = newBottomText
+        })
         
+        present(ac, animated: true)
     }
     
     @IBAction func submit(_ sender: UIButton) {
