@@ -32,11 +32,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hdl-OI-7Dr">
-                                            <rect key="frame" x="18" y="8" width="358" height="208"/>
+                                            <rect key="frame" x="18" y="8" width="358" height="232"/>
                                             <color key="backgroundColor" red="0.64742857220000005" green="0.11853265020000001" blue="0.1335859895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-vl-po7">
-                                            <rect key="frame" x="18" y="233" width="358" height="45"/>
+                                            <rect key="frame" x="18" y="248" width="358" height="45"/>
                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="bME-NQ-1y7"/>
@@ -49,12 +49,12 @@
                                     <constraints>
                                         <constraint firstItem="rOd-vl-po7" firstAttribute="leading" secondItem="Hdl-OI-7Dr" secondAttribute="leading" id="6CO-13-CSa"/>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="leading" secondItem="KWa-SA-jIu" secondAttribute="leadingMargin" constant="10" id="DTa-vI-ODl"/>
-                                        <constraint firstAttribute="bottom" secondItem="Hdl-OI-7Dr" secondAttribute="bottom" constant="85" id="OEK-HE-rcx"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hdl-OI-7Dr" secondAttribute="bottom" constant="61" id="OEK-HE-rcx"/>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="trailing" secondItem="KWa-SA-jIu" secondAttribute="trailingMargin" constant="-10" id="OVw-Hq-5In"/>
                                         <constraint firstItem="rOd-vl-po7" firstAttribute="trailing" secondItem="Hdl-OI-7Dr" secondAttribute="trailing" id="Ywy-aE-h2p"/>
                                         <constraint firstItem="Hdl-OI-7Dr" firstAttribute="top" secondItem="KWa-SA-jIu" secondAttribute="topMargin" id="dqj-XV-YNP"/>
-                                        <constraint firstAttribute="bottom" secondItem="rOd-vl-po7" secondAttribute="bottom" constant="23" id="g4t-3t-TxE"/>
-                                        <constraint firstItem="rOd-vl-po7" firstAttribute="top" secondItem="KWa-SA-jIu" secondAttribute="top" constant="233" id="pbF-Zj-w1q"/>
+                                        <constraint firstAttribute="bottom" secondItem="rOd-vl-po7" secondAttribute="bottom" constant="8" id="g4t-3t-TxE"/>
+                                        <constraint firstItem="rOd-vl-po7" firstAttribute="top" secondItem="KWa-SA-jIu" secondAttribute="top" constant="248" id="pbF-Zj-w1q"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

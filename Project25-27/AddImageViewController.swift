@@ -21,12 +21,9 @@ class AddImageViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Add Image and text"
-
-        print("AddimageViewController page.")
         
         if let imagePath = path {
             imageView.image = UIImage(contentsOfFile: imagePath.path)
-//            let meme = Meme(filePath: imagePath, topText: "", bottomText: "")
             filePath = imagePath
         }
         
@@ -65,7 +62,10 @@ class AddImageViewController: UIViewController {
             return
         }
         
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        let imageData = drawImagesAndText(imageToLoad: image)
+        if let imageToSave = UIImage(data: imageData) {
+            UIImageWriteToSavedPhotosAlbum(imageToSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
@@ -77,6 +77,41 @@ class AddImageViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+    }
+    
+    func drawImagesAndText(imageToLoad: UIImage) -> Data {
+        let renderer = UIGraphicsImageRenderer(size: imageToLoad.size)
+        
+        let renderedImage = renderer.image { ctx in
+            imageToLoad.draw(at: CGPoint(x: 0, y: 0))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            
+            let attr: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 100),
+                .paragraphStyle: paragraphStyle,
+                .strokeWidth: -3,
+                .strokeColor: UIColor.black,
+                .foregroundColor: UIColor.white
+            ]
+            
+            let margin = 22
+            let textWidth = Int(imageToLoad.size.width) - (margin * 2)
+            let textHeight = Int(imageToLoad.size.height) - (margin * 2)
+            let bottomTextYValue = (Int(imageToLoad.size.height) / 6) * 4
+            print("height \(Int(imageToLoad.size.height))")
+            print("textHeight \(textHeight)")
+            
+            let attributtedStringTopText = NSAttributedString(string: topText.uppercased(), attributes: attr)
+            attributtedStringTopText.draw(with: CGRect(x: margin, y: margin, width: textWidth, height: textHeight), options: .usesLineFragmentOrigin, context: nil)
+            
+            let attributtedStringBottomText = NSAttributedString(string: bottomText.uppercased(), attributes: attr)
+            attributtedStringBottomText.draw(with: CGRect(x: margin, y: bottomTextYValue, width: textWidth, height: textHeight), options: .usesLineFragmentOrigin, context: nil)
+            
+        }
+        
+        return renderedImage.jpegData(compressionQuality: 0.8)!
     }
     
 }
