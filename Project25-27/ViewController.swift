@@ -11,6 +11,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     var memes = [Meme]()
     
     override func viewWillAppear(_ animated: Bool) {
+        load()
         collectionView.reloadData()
     }
     
@@ -18,13 +19,13 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // TODO
         /*
-         4. save image data to user defaults
-         4.2 load image data from user defaults
          4.3 connect data to main view controller, reset background colors
-         5. add share
+         5. add share - this will be inside details page
          6. have details page to show image
          7. refactor
          */
+        
+//        delete()
         
         title = "Meme Generator"
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .camera, target: self, action: #selector(addImage))
@@ -32,7 +33,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,11 +41,33 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             fatalError("Could not dequeue MemeView cell.")
         }
 //        item.imageView.image = UIImage(named: "Philosoraptor")
-        cell.imageName.text = "Image Name placeholder"
+        
+        let meme = memes[indexPath.row]
+//        if let imageToLoad = meme.filePath {
+//            cell.imageView.image = UIImage(contentsOfFile: imageToLoad.path)
+//        }
+//        cell.imageView.image = UIImage(contentsOfFile: meme.filePath.path)
+//        cell.imageView.image = try? UIImage(contentsOfFile: String(contentsOf: meme.filePath))
+        
+//        let imagePath = getDocumentaryDirectory().appendingPathComponent(meme.fileName)
+//        do {
+//            let imageData = try Data(contentsOf: imagePath)
+//            cell.imageView.image = UIImage(data: imageData)
+//        } catch {
+//            print("Error loading image: \(error.localizedDescription)")
+//        }
+        
+        if let loadedImage = getSavedImageFromDocumentsDir(named: meme.fileName) {
+            cell.imageView.image = loadedImage
+        }
+        
+        
+        
+        
+        cell.imageName.text = meme.topText
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.init(white: 0, alpha: 0.3).cgColor
         cell.layer.cornerRadius = 5
-        
         return cell
     }
     
@@ -76,6 +99,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         // move to add image & text screen
         if let avc = storyboard?.instantiateViewController(withIdentifier: "AddImage") as? AddImageViewController {
+            avc.fileName = imageName
             avc.path = imagePath
             avc.memes = memes
             navigationController?.pushViewController(avc, animated: true)
@@ -97,10 +121,27 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             
             do {
                 memes = try jsonDecoder.decode([Meme].self, from: savedData)
-                print("MEMES LOADED!")
             } catch {
                 print("Failed to load memes: \(error.localizedDescription)")
             }
+        }
+    }
+    
+   func delete() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "memes")
+        print("DELETED", defaults.bool(forKey: "memes"))
+    }
+    
+    func getSavedImageFromDocumentsDir(named: String) -> UIImage? {
+        let imagePath = getDocumentaryDirectory().appendingPathComponent(named)
+        
+        do {
+            let imageData = try Data(contentsOf: imagePath)
+            return UIImage(data: imageData)
+        } catch {
+            print("Error loading image from saved dir: \(error.localizedDescription)")
+            return nil
         }
     }
 }

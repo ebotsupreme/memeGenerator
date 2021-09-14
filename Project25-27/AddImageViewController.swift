@@ -10,6 +10,7 @@ import UIKit
 
 class AddImageViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
+    var fileName: String?
     var path: URL?
     var topText = ""
     var bottomText = ""
@@ -65,6 +66,22 @@ class AddImageViewController: UIViewController {
         let imageData = drawImagesAndText(imageToLoad: image)
         if let imageToSave = UIImage(data: imageData) {
             UIImageWriteToSavedPhotosAlbum(imageToSave, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+            
+            let imageName = UUID().uuidString
+            let imagePath = getDocumentaryDirectory().appendingPathComponent(imageName)
+            let success = saveToDocumentDir(image: imageToSave, imagePath)
+            
+            if success {
+                let meme = Meme(fileName: imageName, filePath: imagePath, topText: topText, bottomText: bottomText)
+                memes.insert(meme, at: 0)
+                save()
+            } else {
+                // Add alert for failure to notify user
+                print("Failed to save image. Try again.")
+            }
+            
+            
+               
         }
     }
     
@@ -103,8 +120,6 @@ class AddImageViewController: UIViewController {
             let textWidth = Int(imageToLoad.size.width) - (margin * 2)
             let textHeight = Int(imageToLoad.size.height) - (margin * 2)
             let bottomTextYValue = (Int(imageToLoad.size.height) / 6) * 4
-            print("height \(Int(imageToLoad.size.height))")
-            print("textHeight \(textHeight)")
             
             let attributtedStringTopText = NSAttributedString(string: topText.uppercased(), attributes: attr)
             attributtedStringTopText.draw(with: CGRect(x: margin, y: margin, width: textWidth, height: textHeight), options: .usesLineFragmentOrigin, context: nil)
@@ -123,8 +138,24 @@ class AddImageViewController: UIViewController {
         if let savedData = try? jsonEncoder.encode(memes) {
             let defaults = UserDefaults.standard
             defaults.set(savedData, forKey: "memes")
-            print("SAVED!")
         }
     }
     
+    func getDocumentaryDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func saveToDocumentDir(image: UIImage, _ imagePath: URL) -> Bool{
+        
+        let data = image.jpegData(compressionQuality: 0.8)
+        
+        do {
+            try data?.write(to: imagePath)
+            return true
+        } catch {
+            print("Error saving image to document dir: \(error.localizedDescription)")
+            return false
+        }
+    }
 }

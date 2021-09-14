@@ -8,6 +8,7 @@
 import Foundation
 
 struct Meme: Codable {
+    let fileName: String
     let filePath: URL
     let topText: String
     let bottomText: String
