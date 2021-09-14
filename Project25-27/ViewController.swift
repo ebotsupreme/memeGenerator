@@ -19,10 +19,10 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // TODO
         /*
-         4.3 connect data to main view controller, reset background colors
-         5. add share - this will be inside details page
-         6. have details page to show image
-         7. refactor
+         * update background colors for view controller - look at youtube for ref
+         * create details page to display image in storyboard
+         * add share - this will be inside details page
+         * refactor
          */
         
 //        delete()
@@ -40,29 +40,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Meme", for: indexPath) as? MemeViewCell else {
             fatalError("Could not dequeue MemeView cell.")
         }
-//        item.imageView.image = UIImage(named: "Philosoraptor")
-        
+
         let meme = memes[indexPath.row]
-//        if let imageToLoad = meme.filePath {
-//            cell.imageView.image = UIImage(contentsOfFile: imageToLoad.path)
-//        }
-//        cell.imageView.image = UIImage(contentsOfFile: meme.filePath.path)
-//        cell.imageView.image = try? UIImage(contentsOfFile: String(contentsOf: meme.filePath))
-        
-//        let imagePath = getDocumentaryDirectory().appendingPathComponent(meme.fileName)
-//        do {
-//            let imageData = try Data(contentsOf: imagePath)
-//            cell.imageView.image = UIImage(data: imageData)
-//        } catch {
-//            print("Error loading image: \(error.localizedDescription)")
-//        }
         
         if let loadedImage = getSavedImageFromDocumentsDir(named: meme.fileName) {
             cell.imageView.image = loadedImage
         }
-        
-        
-        
         
         cell.imageName.text = meme.topText
         cell.layer.borderWidth = 1
